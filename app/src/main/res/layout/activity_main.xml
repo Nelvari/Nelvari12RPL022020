@@ -6,22 +6,32 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:gravity="center"
     tools:context=".MainActivity">
 
     <EditText
-        android:id="@+id/txtusername"
-        android:hint="username"
+        android:id="@+id/txtUsername"
+        android:hint="Username"
+        android:textColor="@android:color/black"
         android:layout_width="match_parent"
+        android:layout_marginHorizontal="20dp"
         android:layout_height="wrap_content"/>
     <EditText
-        android:id="@+id/txtpassword"
-        android:hint="password"
+        android:id="@+id/txtPassword"
+        android:hint="Password"
+        android:textColor="@android:color/black"
         android:inputType="textPassword"
+        android:layout_marginHorizontal="20dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
     <Button
-        android:id="@+id/btnlogin"
+        android:layout_marginTop="20dp"
+        android:id="@+id/btnLogin"
         android:text="Login"
+        android:textColor="@android:color/white"
+        android:layout_marginHorizontal="20dp"
+        android:background="@drawable/button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
+
 </LinearLayout>
