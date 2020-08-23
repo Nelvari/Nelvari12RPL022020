@@ -14,7 +14,7 @@ import android.widget.Toast;
 public class MainActivity extends AppCompatActivity {
 
     EditText etUsername, etPassword;
-    Button btnLogin;
+    Button btnLogin, btnRegister;
     String username, password;
 
     @Override
@@ -25,6 +25,7 @@ public class MainActivity extends AppCompatActivity {
         etUsername = findViewById(R.id.txtUsername);
         etPassword = findViewById(R.id.txtPassword);
         btnLogin = findViewById(R.id.btnLogin);
+        btnRegister = findViewById(R.id.btnRegister);
 
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -39,7 +40,7 @@ public class MainActivity extends AppCompatActivity {
                     startActivity(intent);
                 }else if(username.equalsIgnoreCase("nelvari") && password.equalsIgnoreCase("nelvari")){
                     Toast.makeText(MainActivity.this, "Hai Nelvari!!", Toast.LENGTH_SHORT).show();
-                    Intent intent = new Intent(MainActivity.this, CostumerActivity.class);
+                    Intent intent = new Intent(MainActivity.this, DashboardActivity.class);
                     startActivity(intent);
                 }else {
                     AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
@@ -53,6 +54,14 @@ public class MainActivity extends AppCompatActivity {
                     builder.show();
                 }
 
+            }
+        });
+
+        btnRegister.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainActivity.this, RegisterActivity.class);
+                startActivity(intent);
             }
         });
 

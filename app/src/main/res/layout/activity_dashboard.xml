@@ -4,14 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".CostumerActivity"
+    tools:context=".DashboardActivity"
     android:gravity="center">
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="20dp"
-        android:text="Costumer"
+        android:text="Dashboard"
         android:gravity="center"
         android:textSize="50sp"
         android:textColor="@color/colorPrimary"/>
