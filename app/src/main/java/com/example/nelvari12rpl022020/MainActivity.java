@@ -13,7 +13,7 @@ import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
-    EditText etUsername, etPassword;
+    EditText etEmail, etPassword;
     Button btnLogin, btnRegister;
     String username, password;
 
@@ -22,8 +22,8 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        etUsername = findViewById(R.id.txtUsername);
-        etPassword = findViewById(R.id.txtPassword);
+        etEmail = findViewById(R.id.txtEmail);
+        etPassword = findViewById(R.id.etPassword);
         btnLogin = findViewById(R.id.btnLogin);
         btnRegister = findViewById(R.id.btnRegister);
 
@@ -31,7 +31,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                username = etUsername.getText().toString();
+                username = etEmail.getText().toString();
                 password = etPassword.getText().toString();
 
                 if (username.equalsIgnoreCase("admin") && password.equalsIgnoreCase("admin")){
