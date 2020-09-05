@@ -5,15 +5,28 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".AdminActivity"
+    android:orientation="vertical"
     android:gravity="center">
 
-    <TextView
+    <Button
+        android:id="@+id/btnData"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="20dp"
-        android:text="Admin"
+        android:text="Data Customer"
         android:gravity="center"
-        android:textSize="50sp"
-        android:textColor="@color/colorPrimary"/>
+        android:textColor="@android:color/white"
+        android:background="@color/colorPrimary"/>
+
+    <Button
+        android:id="@+id/btnLogout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="20dp"
+        android:text="Logout"
+        android:layout_marginTop="20dp"
+        android:gravity="center"
+        android:textColor="@android:color/white"
+        android:background="@color/colorPrimary"/>
 
 </LinearLayout>

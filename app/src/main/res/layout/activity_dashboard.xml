@@ -9,9 +9,9 @@
     android:orientation="vertical">
 
     <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:title="Rental Sepeda"
         app:titleTextColor="@android:color/white"
         android:background="@color/colorPrimaryDark"/>
 
