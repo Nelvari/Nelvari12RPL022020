@@ -43,9 +43,17 @@ public class MainActivity extends AppCompatActivity {
         btnRegister = findViewById(R.id.btnRegister);
 
         sp = getSharedPreferences("login",MODE_PRIVATE);
+        sp.edit().putString("logged", sp.getString("logged", "missing")).apply();
 
-        if(sp.getBoolean("logged",true)){
+        String admin = sp.getString("logged", "missing");
+        String customer = sp.getString("logged", "missing");
+
+        if(customer.equals("customer")){
             Intent intent = new Intent(MainActivity.this, DashboardActivity.class);
+            startActivity(intent);
+            finish();
+        }else if (admin.equals("admin")){
+            Intent intent = new Intent(MainActivity.this, AdminActivity.class);
             startActivity(intent);
             finish();
         }
@@ -73,13 +81,13 @@ public class MainActivity extends AppCompatActivity {
                                     String roleuser = PAYLOAD.getString("roleuser");
                                     Log.d("PAYLOAD", "onResponse: " + PAYLOAD);
                                     if (sukses && roleuser.equals("admin")) {
-                                        sp.edit().putBoolean("logged",true).apply();
+                                        sp.edit().putString("logged","admin").apply();
                                         Intent intent = new Intent(MainActivity.this, AdminActivity.class);
                                         startActivity(intent);
                                         finish();
                                         progressDialog.dismiss();
                                     } else if (sukses && roleuser.equals("customer")){
-                                        sp.edit().putBoolean("logged",true).apply();
+                                        sp.edit().putString("logged","customer").apply();
                                         Intent intent = new Intent(MainActivity.this, DashboardActivity.class);
                                         startActivity(intent);
                                         finish();
@@ -96,6 +104,10 @@ public class MainActivity extends AppCompatActivity {
                             @Override
                             public void onError(ANError anError) {
                                 progressDialog.dismiss();
+                                Log.d("TAG", "onError: " + anError.getErrorDetail());
+                                Log.d("TAG", "onError: " + anError.getErrorBody());
+                                Log.d("TAG", "onError: " + anError.getErrorCode());
+                                Log.d("TAG", "onError: " + anError.getResponse());
                             }
                         });
 

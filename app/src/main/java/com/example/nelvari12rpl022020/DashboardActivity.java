@@ -47,7 +47,7 @@ public class DashboardActivity extends AppCompatActivity {
 
                         public void onClick(DialogInterface arg0, int arg1) {
                             sp = getSharedPreferences("login",MODE_PRIVATE);
-                            sp.edit().putBoolean("logged",false).apply();
+                            sp.edit().putString("logged","missing").apply();
                             Intent intent = new Intent(DashboardActivity.this, MainActivity.class);
                             startActivity(intent);
                             finish();

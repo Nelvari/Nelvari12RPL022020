@@ -5,26 +5,22 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".AdminActivity"
-    android:orientation="vertical"
-    android:gravity="center">
+    android:orientation="vertical">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:titleTextColor="@android:color/white"
+        android:background="@color/colorPrimaryDark"/>
 
     <Button
+        android:layout_marginTop="50dp"
         android:id="@+id/btnData"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="20dp"
         android:text="Data Customer"
-        android:gravity="center"
-        android:textColor="@android:color/white"
-        android:background="@color/colorPrimary"/>
-
-    <Button
-        android:id="@+id/btnLogout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginHorizontal="20dp"
-        android:text="Logout"
-        android:layout_marginTop="20dp"
         android:gravity="center"
         android:textColor="@android:color/white"
         android:background="@color/colorPrimary"/>
