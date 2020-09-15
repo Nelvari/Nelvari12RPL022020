@@ -19,7 +19,7 @@ import android.widget.TextView;
 public class AdminActivity extends AppCompatActivity {
 
     SharedPreferences sp;
-    Button btnData, btnLogout;
+    Button btnData;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

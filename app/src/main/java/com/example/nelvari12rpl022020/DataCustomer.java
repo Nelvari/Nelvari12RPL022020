@@ -1,14 +1,16 @@
 package com.example.nelvari12rpl022020;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.androidnetworking.AndroidNetworking;
 import com.androidnetworking.common.Priority;
@@ -42,6 +44,11 @@ public class DataCustomer extends AppCompatActivity {
         cvInbox = findViewById(R.id.cvInbox);
         recyclerView = findViewById(R.id.listCustomer);
 
+        getData();
+
+    }
+
+    private void getData() {
         datalist = new ArrayList<>();
         Log.d("geo", "onCreate: ");
 
@@ -60,8 +67,12 @@ public class DataCustomer extends AppCompatActivity {
 
                                 Model model = new Model();
                                 JSONObject object = data.getJSONObject(i);
-                                model.setNama(object.getString("nama"));
+                                model.setId(object.getString("id"));
                                 model.setEmail(object.getString("email"));
+                                model.setNama(object.getString("nama"));
+                                model.setNohp(object.getString("nohp"));
+                                model.setAlamat(object.getString("alamat"));
+                                model.setNoktp(object.getString("noktp"));
                                 datalist.add(model);
 
                             }
@@ -73,14 +84,6 @@ public class DataCustomer extends AppCompatActivity {
                             recyclerView.setLayoutManager(layoutManager);
 
                             recyclerView.setAdapter(adapter);
-
-                            Log.d("pay1", "onResponse: " + response.getJSONArray("PAYLOAD"));
-
-                            if (response.getJSONArray("PAYLOAD").length() == 0){
-
-                                recyclerView.setVisibility(View.GONE);
-
-                            }
 
                         } catch (JSONException e) {
                             e.printStackTrace();
@@ -96,4 +99,16 @@ public class DataCustomer extends AppCompatActivity {
                     }
                 });
     }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (resultCode == 23 && data.getStringExtra("refresh") != null) {
+            //refresh list
+            getData();
+            Toast.makeText(this, "hihihihi", Toast.LENGTH_SHORT).show();
+
+        }
+    }
+
 }
