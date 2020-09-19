@@ -55,7 +55,7 @@ public class RegisterActivity extends AppCompatActivity {
                 String password = txtPassword.getText().toString().trim();
                 progressDialog.setTitle("Register In...");
                 progressDialog.show();
-                AndroidNetworking.post(BaseUrl.url + "login.php")
+                AndroidNetworking.post(BaseUrl.url + "registrasi.php")
                         .addBodyParameter("noktp", noKtp)
                         .addBodyParameter("email", email)
                         .addBodyParameter("password", password)
@@ -69,11 +69,12 @@ public class RegisterActivity extends AppCompatActivity {
                             public void onResponse(JSONObject response) {
                                 Log.d("hasil", "onResponse: ");
                                 try {
-                                    JSONObject status = response.getJSONObject("STATUS");
-                                    JSONObject message = response.getJSONObject("MESSAGE");
+                                    JSONObject hasil = response.getJSONObject("hasil");
+                                    String status = hasil.getString("STATUS");
+                                    String message = hasil.getString("MESSAGE");
                                     Log.d("STATUS", "onResponse: " + status);
                                     if (status.equals("SUCCESS")) {
-                                        sp.edit().putBoolean("logged",true).apply();
+                                        sp.edit().putString("logged","customer").apply();
                                         Intent intent = new Intent(RegisterActivity.this, DashboardActivity.class);
                                         startActivity(intent);
                                         finish();
@@ -89,7 +90,11 @@ public class RegisterActivity extends AppCompatActivity {
 
                             @Override
                             public void onError(ANError anError) {
-
+                                progressDialog.dismiss();
+                                Log.d("TAG", "onError: " + anError.getErrorDetail());
+                                Log.d("TAG", "onError: " + anError.getErrorBody());
+                                Log.d("TAG", "onError: " + anError.getErrorCode());
+                                Log.d("TAG", "onError: " + anError.getResponse());
                             }
                         });
 
