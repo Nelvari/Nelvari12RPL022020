@@ -79,6 +79,7 @@ public class EditCustomer extends AppCompatActivity {
                                     if (sukses) {
                                         Intent returnIntent = new Intent(EditCustomer.this, DataCustomer.class);
                                         returnIntent.putExtra("refresh", "refresh");
+                                        returnIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                                         startActivityForResult(returnIntent, 23);
                                         finish();
                                         Toast.makeText(EditCustomer.this, "Edit Suskses", Toast.LENGTH_SHORT).show();
